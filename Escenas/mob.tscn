@@ -46,7 +46,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i2gqx"]
 radius = 36.0
-height = 126.0
+height = 74.0
 
 [node name="Mob" type="RigidBody2D"]
 position = Vector2(105, 64)
@@ -58,8 +58,7 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_ouer3")
-animation = &"fly"
-frame_progress = 0.35645425
+animation = &"swim"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_i2gqx")
