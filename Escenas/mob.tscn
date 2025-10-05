@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://ccubi4rrcpcfj"]
+[gd_scene load_steps=10 format=3 uid="uid://ccubi4rrcpcfj"]
 
 [ext_resource type="Texture2D" uid="uid://tjmwxrdemx6l" path="res://Assets/dodge_the_creeps_2d_assets/art/enemyFlyingAlt_1.png" id="1_1cn8u"]
+[ext_resource type="Script" uid="uid://c6glkskh82ejx" path="res://Scripts/mob.gd" id="1_ag3aj"]
 [ext_resource type="Texture2D" uid="uid://dtlgg555j81b" path="res://Assets/dodge_the_creeps_2d_assets/art/enemyFlyingAlt_2.png" id="2_ag3aj"]
 [ext_resource type="Texture2D" uid="uid://hpw6pqrlmgap" path="res://Assets/dodge_the_creeps_2d_assets/art/enemySwimming_1.png" id="3_i2gqx"]
 [ext_resource type="Texture2D" uid="uid://dgqo06nrpy541" path="res://Assets/dodge_the_creeps_2d_assets/art/enemySwimming_2.png" id="4_y108j"]
@@ -43,9 +44,15 @@ animations = [{
 "speed": 3.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i2gqx"]
+radius = 36.0
+height = 126.0
+
 [node name="Mob" type="RigidBody2D"]
+position = Vector2(105, 64)
 collision_mask = 0
 gravity_scale = 0.0
+script = ExtResource("1_ag3aj")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -55,5 +62,6 @@ animation = &"fly"
 frame_progress = 0.35645425
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_i2gqx")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
