@@ -4,16 +4,21 @@ extends Node
 var score
 
 func _ready() -> void:
-	new_game()
+	pass
 #cuando perdemos para todos los timers se paran
 func game_over():
+	$HUD.show_game_over()
 	$scoreTimer.stop()
 	$mobTimer.stop()
+	
 #funcion que reinicia temporizadores, inicia el jugador y reinicia puntuaciones
 func new_game():
 	score = 0
 	$Player.start($startPosition.position)
 	$startTimer.start()
+	
+	$HUD.show_message("Get Ready!")
+	$HUD.update_score(score)
 
 """
 Esta funcion basicamente hace el ciclo de vida de un mob
@@ -47,6 +52,7 @@ func _on_mob_timer_timeout():
 #vamos sumandole 1 a los puntos con el tiempo
 func _on_score_timer_timeout():
 	score += 1
+	$HUD.update_score(score)
 
 #cuando empezamos el timer de comienzo empiezan el de mobs y el de puntos
 func _on_start_timer_timeout():
