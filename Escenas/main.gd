@@ -10,6 +10,7 @@ func game_over():
 	$HUD.show_game_over()
 	$scoreTimer.stop()
 	$mobTimer.stop()
+	$DeathSound.play()
 	
 #funcion que reinicia temporizadores, inicia el jugador y reinicia puntuaciones
 func new_game():
@@ -19,6 +20,7 @@ func new_game():
 	
 	$HUD.show_message("Get Ready!")
 	$HUD.update_score(score)
+	get_tree().call_group("mobs","queue_free()")
 
 """
 Esta funcion basicamente hace el ciclo de vida de un mob
@@ -49,7 +51,7 @@ func _on_mob_timer_timeout():
 	
 	add_child(mob)
 
-#vamos sumandole 1 a los puntos con el tiempo
+#vamos sumandole 1 a los puntos con el tiempo, luego se lo pasa al hud para que lo muestre en pantalla
 func _on_score_timer_timeout():
 	score += 1
 	$HUD.update_score(score)

@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://djl5kf0jks2tb"]
+[gd_scene load_steps=5 format=3 uid="uid://djl5kf0jks2tb"]
 
 [ext_resource type="Script" uid="uid://b68eh6r5pkgmc" path="res://Scripts/HUD.gd" id="1_gmmqc"]
 [ext_resource type="FontFile" uid="uid://hmkb8q410mgw" path="res://Assets/dodge_the_creeps_2d_assets/fonts/Xolonium-Regular.ttf" id="1_j171n"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_gmmqc"]
+action = &"start_game"
+
+[sub_resource type="Shortcut" id="Shortcut_gmmqc"]
+events = [SubResource("InputEventAction_gmmqc")]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_gmmqc")
@@ -16,7 +22,7 @@ offset_bottom = 49.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("1_j171n")
 theme_override_font_sizes/font_size = 40
-text = "0"
+text = "Puntos: 0"
 horizontal_alignment = 1
 
 [node name="message" type="Label" parent="."]
@@ -54,9 +60,11 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("1_j171n")
 theme_override_font_sizes/font_size = 50
+shortcut = SubResource("Shortcut_gmmqc")
 text = "Iniciar"
 
 [node name="messageTimer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="pressed" from="startButton" to="." method="_on_start_button_pressed"]
 [connection signal="timeout" from="messageTimer" to="." method="_on_message_timer_timeout"]
